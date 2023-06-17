@@ -12,7 +12,7 @@
 
 <BorderPane prefHeight="768" prefWidth="1366" style="-fx-background-color: #242529;"
             xmlns="http://javafx.com/javafx/19.0.2" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.tugasbesar.HelloController">
+            fx:controller="com.example.tugasbesar.Controller">
 
     <!--    Left Menu     -->
     <left>
@@ -68,6 +68,8 @@
               BorderPane.alignment="CENTER">
             <AnchorPane fx:id="panelDataFrame" prefHeight="596.0" prefWidth="781.0">
                 <children>
+
+                    <Button fx:id="btnNextPage" onAction="#moveToNext"></Button>
 
                     <TableView fx:id="tableView" editable="true" fixedCellSize="0.0" layoutX="423.0" layoutY="92.0"
                                nodeOrientation="LEFT_TO_RIGHT" prefHeight="554.0" prefWidth="315.0"

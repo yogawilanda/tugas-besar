@@ -4,13 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41ef2654-f8af-4994-80f1-ac0efeb0ecaf" name="Changes" comment="asd" />
+    <list default="true" id="41ef2654-f8af-4994-80f1-ac0efeb0ecaf" name="Changes" comment="init">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Dashboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/dashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/pageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/pageView.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
@@ -32,17 +53,18 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "new-branch",
+    "last_directory_selection": "F:/Coding/java/tugas-besar/src/main/java/com/example/tugasbesar",
     "last_opened_file_path": "F:/Coding/java/mysql-connector-j-8.0.32.jar",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.41264367",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.tugasbesar.HelloApplication" />
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.tugasbesar.App" />
       <module name="tugas-besar" />
       <extension name="coverage">
         <pattern>
@@ -76,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687015177943</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="init">
+      <created>1687015455837</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1687015455837</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -104,6 +133,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="asd" />
-    <option name="LAST_COMMIT_MESSAGE" value="asd" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
 </project>

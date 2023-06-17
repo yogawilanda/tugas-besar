@@ -3,15 +3,17 @@ package com.example.tugasbesar;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.sql.*;
 
-public class HelloController {
+public class Controller {
     @FXML
     public AnchorPane panelDataFrame;
     public AnchorPane loginScene;
@@ -50,14 +52,20 @@ public class HelloController {
         String url = "jdbc:mysql://localhost:3306/" + database;
 
         // mencoba menyambungkan database ke dalam aplikasi.
-        try ( Connection connection = DriverManager.getConnection(url, username, password) ) {
+        try ( Connection connection = DriverManager.getConnection(url, "root", password) ) {
+//        try ( Connection connection = DriverManager.getConnection(url, username, password) ) {
             statusLabel.setText("Login successful!");
 
             data = FXCollections.observableArrayList();
 
+
+
             // Retrieve data from the database
             String query = "SELECT * FROM pegawai";
             PreparedStatement statement = connection.prepareStatement(query);
+//            System.out.println( statement.getMetaData());
+
+//            Get Metadata of Table Name based on index of its table number
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 String name = resultSet.getString("namaPegawai");
@@ -86,6 +94,10 @@ public class HelloController {
 
     private void hideTable() {
         panelDataFrame.setVisible(false);
+    }
+
+    public void moveToNext(ActionEvent actionEvent) throws IOException {
+        Dashboard.setRoot("pageView");
     }
 
     public static class Person {
