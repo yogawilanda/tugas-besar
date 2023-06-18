@@ -17,9 +17,12 @@ public class App extends Application {
     final String fileName = "pageView.fxml";
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start (Stage stage) throws IOException {
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fileName)));
+        FXMLLoader loader = new FXMLLoader(getClass( ).getResource(fileName));
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fileName)));
+        Parent root = loader.load( );
+
         Scene scene = new Scene(root);
         stage.setTitle("Eleanor - Desktop App Ticket Reservation");
         //menyembunyikan windows bar
@@ -27,23 +30,23 @@ public class App extends Application {
 
         //membuat fitur drag and move
         root.setOnMousePressed(event -> {
-            xOffset = event.getSceneX();
-            yOffset = event.getSceneY();
+            xOffset = event.getSceneX( );
+            yOffset = event.getSceneY( );
         });
 
         //menggerakan scene
         root.setOnMouseDragged(event -> {
-            stage.setX(event.getScreenX() - xOffset);
-            stage.setY(event.getScreenY() - yOffset);
+            stage.setX(event.getScreenX( ) - xOffset);
+            stage.setY(event.getScreenY( ) - yOffset);
         });
 
         stage.setScene(scene);
-        stage.show();
+        stage.show( );
     }
 
 
-    public static void main(String[] args) {
-        launch();
+    public static void main (String[] args) {
+        launch( );
     }
 
 
