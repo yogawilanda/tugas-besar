@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class App extends Application {
     private double xOffset = 0;
@@ -18,9 +17,8 @@ public class App extends Application {
 
     @Override
     public void start (Stage stage) throws IOException {
-
+        //Menjalankan aplikasi dengan tampilan yang telah di sediakan di dalam variable fileName.
         FXMLLoader loader = new FXMLLoader(getClass( ).getResource(fileName));
-//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fileName)));
         Parent root = loader.load( );
 
         Scene scene = new Scene(root);

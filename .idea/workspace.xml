@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41ef2654-f8af-4994-80f1-ac0efeb0ecaf" name="Changes" comment="adding CRUD button">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/ninuwibu.mp3" afterDir="false" />
+    <list default="true" id="41ef2654-f8af-4994-80f1-ac0efeb0ecaf" name="Changes" comment="adding media player and webview (just hobbies, nvm)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/pageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/pageView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +58,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.41264367",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
@@ -136,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687092207984</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="adding media player and webview (just hobbies, nvm)">
+      <created>1687107154132</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1687107154132</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,6 +172,7 @@
     <MESSAGE value="init" />
     <MESSAGE value="relayout" />
     <MESSAGE value="adding CRUD button" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding CRUD button" />
+    <MESSAGE value="adding media player and webview (just hobbies, nvm)" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding media player and webview (just hobbies, nvm)" />
   </component>
 </project>

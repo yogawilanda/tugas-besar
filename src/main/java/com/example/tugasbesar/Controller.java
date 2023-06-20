@@ -39,6 +39,7 @@ public class Controller {
     public Button btnUpdateUser;
     public HBox controlBtnDataFrame;
     public Button btnDeleteUser;
+    String lagu = "F:\\Coding\\java\\tugas-besar\\src\\main\\java\\com\\example\\tugasbesar\\ninuwibu.mp3";
     public ToggleButton playToggleButton;
     public Button openWebUrlButton2;
 
@@ -76,20 +77,7 @@ public class Controller {
         password = passwordField.getText( );
     }
 
-    String lagu = "F:\\Coding\\java\\tugas-besar\\src\\main\\java\\com\\example\\tugasbesar\\ninuwibu.mp3";
-
     private MediaPlayer mediaPlayer;
-
-//    public void initialize() {
-//        // Initialize other components...
-//
-//        // Load and play the music when the app starts
-//        String musicFile = lagu ;
-//        Media media = new Media(new File(musicFile).toURI().toString());
-//        mediaPlayer = new MediaPlayer(media);
-//        mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
-//        mediaPlayer.play();
-//    }
 
     @FXML
     private WebView webView;
@@ -97,27 +85,6 @@ public class Controller {
 
     @FXML
     private Button openWebUrlButton;
-
-    @FXML
-    private void openWebUrl2 (ActionEvent event) {
-        // Create a new stage
-        Stage stage = new Stage( );
-        stage.setTitle("YouTube Video");
-
-        // Create a WebView and WebEngine
-        WebView webView = new WebView( );
-        WebEngine webEngine = webView.getEngine( );
-
-        // Set the YouTube video embed URL as the source
-        String videoUrl = "https://youtu.be/Ony6_S4J-zc";
-        webEngine.load(videoUrl);
-
-        // Set the WebView as the content of the stage
-        stage.setScene(new Scene(webView));
-
-        // Show the stage
-        stage.show( );
-    }
 
     @FXML
     private void openWebUrl (ActionEvent event) {
@@ -143,31 +110,11 @@ public class Controller {
     @FXML
     private Button playButton;
 
-    @FXML
-    public void playMedia (ActionEvent actionEvent) {
-        String mediaPath = lagu;
-        if (mediaPlayer != null && mediaPlayer.getStatus( ) == MediaPlayer.Status.PLAYING) {
-            mediaPlayer.pause( );
-        } else {
-            if (mediaPlayer != null && mediaPlayer.getStatus( ) == MediaPlayer.Status.PAUSED) {
-                mediaPlayer.play( );
-            } else {
-                Media media = new Media(new File(mediaPath).toURI( ).toString( ));
 
-                if (mediaPlayer != null) {
-                    mediaPlayer.dispose( );
-                }
-
-                mediaPlayer = new MediaPlayer(media);
-                mediaPlayer.setAutoPlay(true);
-
-                MediaView mediaView = new MediaView(mediaPlayer);
-                panelDataFrame.getChildren( ).add(mediaView);
-
-                mediaPlayer.setOnEndOfMedia(() -> playToggleButton.setSelected(false));
-            }
-        }
-    }
+    //    function playMedia membutuhkan trigger dari ActionEvent dengan menggunakan klik pada atau enter pada keyboard
+    //    Alur kerjanya :
+    //    1. memutar audio berdasarkan path yang dituju, apabila ditemukan, maka akan memutar
+    //    2. Jika tidak ditemukan, akan menggunakan memberikan informasi bahwa musik tidak ditemukan.
 
 
     String database = "eleanor_db";
@@ -178,28 +125,6 @@ public class Controller {
     }
 
     private Connection connection;
-
-    void connection () {
-        try {
-            connection = getConnection( ); // Store the connection in the member variable
-            loginScene.setVisible(false);
-            imgAnchorLogin.setVisible(false);
-        } catch (SQLException e) {
-            statusLabel.setText("Koneksi Gagal, Cek Stacktrace!");
-            e.printStackTrace( );
-            hideTable( );
-        }
-    }
-
-    public void login () {
-        getUsername( );
-        getPassword( );
-        connection( );
-        controlBtnDataFrame.setVisible(true);
-        tableView.setVisible(false);
-        statusLabel.setText("Login successful!");
-
-    }
 
     private void dataFramer (Connection connection) throws SQLException {
         data = FXCollections.observableArrayList( );
@@ -222,36 +147,47 @@ public class Controller {
         salaryTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue( ).getSalary( ) + ""));
     }
 
-//    public void addRecord (ActionEvent actionEvent) {
-//        try ( Connection connection = getConnection( ) ) {
-//            // Prepare the INSERT statement
-//            String query = "INSERT INTO pegawai (namaPegawai, gaji) VALUES (?, ?)";
-//            PreparedStatement statement = connection.prepareStatement(query);
-//            statement.setString(1, "John Doe"); // Replace with actual name
-//            statement.setDouble(2, 5000.0); // Replace with actual salary
-//
-//            // Execute the INSERT statement
-//            int affectedRows = statement.executeUpdate( );
-//            if (affectedRows > 0) {
-//                System.out.println("Record inserted successfully!");
-//            } else {
-//                System.out.println("Failed to insert record!");
-//            }
-//
-//            // Refresh the data in the TableView
-//            dataFramer(connection);
-//        } catch (SQLException e) {
-//            e.printStackTrace( );
-//        }
-//    }
+    public TextField nameTextField;
+    public Dialog<Pair<String, Double>> dialog;
+
+    void connection () {
+        try {
+            connection = getConnection( ); // Store the connection in the member variable
+            loginScene.setVisible(false);
+//            imgAnchorLogin.setVisible(false);
+        } catch (SQLException e) {
+            statusLabel.setText("Koneksi Gagal, Cek Stacktrace!");
+            e.printStackTrace( );
+            hideTable( );
+        }
+    }
+
+    private void hideTable () {
+        panelDataFrame.setVisible(false);
+    }
+    public void login () {
+        getUsername( );
+        getPassword( );
+        connection( );
+        controlBtnDataFrame.setVisible(true);
+        tableView.setVisible(false);
+        statusLabel.setText("Login successful!");
+
+    }
+    public void backToLogin (ActionEvent actionEvent) throws  SQLException {
+        getConnection( ).close( );
+        tableView.setVisible(false);
+        loginScene.setVisible(true);
+    }
 
     public void addRecord (ActionEvent actionEvent) {
-        Dialog<Pair<String, Double>> dialog = new Dialog<>( );
+        dialog = new Dialog<>( );
         dialog.setTitle("Add Record");
         dialog.setHeaderText("Enter the name and salary for the new record:");
 
         // Set up the text fields
-        TextField nameTextField = new TextField( );
+
+        nameTextField = new TextField( );
         TextField salaryTextField = new TextField( );
         GridPane gridPane = new GridPane( );
         gridPane.add(new Label("Name:"), 0, 0);
@@ -302,62 +238,62 @@ public class Controller {
         });
     }
 
-    private void hideTable () {
-        panelDataFrame.setVisible(false);
-    }
-
-    public void moveToNext (ActionEvent actionEvent) throws IOException, SQLException {
-        getConnection( ).close( );
-        tableView.setVisible(false);
-        loginScene.setVisible(true);
-    }
-
     public void updateRecord (ActionEvent actionEvent) {
-        try ( Connection connection = getConnection( ) ) {
-            // Prepare the UPDATE statement
-            String query = "UPDATE pegawai SET gaji = ? WHERE namaPegawai = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setDouble(1, 50.0); // Replace with the updated salary
-            statement.setString(2, "John Doe"); // Replace with the name of the record to update
+        Dialog<Pair<String, Double>> dialog = new Dialog<>( );
+        dialog.setTitle("Update Record");
+        dialog.setHeaderText("Enter the name and updated salary for the record:");
 
-            // Execute the UPDATE statement
-            int affectedRows = statement.executeUpdate( );
-            if (affectedRows > 0) {
-                System.out.println("Record updated successfully!");
-            } else {
-                System.out.println("Failed to update record!");
+        // Set up the text fields
+        TextField nameTextField = new TextField( );
+        TextField salaryTextField = new TextField( );
+        GridPane gridPane = new GridPane( );
+        gridPane.add(new Label("Name:"), 0, 0);
+        gridPane.add(nameTextField, 1, 0);
+        gridPane.add(new Label("Updated Salary:"), 0, 1);
+        gridPane.add(salaryTextField, 1, 1);
+        dialog.getDialogPane( ).setContent(gridPane);
+
+        // Add buttons to the dialog
+        ButtonType updateButton = new ButtonType("Update", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane( ).getButtonTypes( ).addAll(updateButton, ButtonType.CANCEL);
+
+        // Set the result converter to get the entered name and updated salary
+        dialog.setResultConverter(buttonType -> {
+            if (buttonType == updateButton) {
+                String name = nameTextField.getText( ).trim( );
+                double updatedSalary = Double.parseDouble(salaryTextField.getText( ).trim( ));
+                return new Pair<>(name, updatedSalary);
             }
+            return null;
+        });
 
-            // Refresh the data in the TableView
-            dataFramer(connection);
-        } catch (SQLException e) {
-            e.printStackTrace( );
-        }
+        // Show the dialog and wait for user input
+        Optional<Pair<String, Double>> result = dialog.showAndWait( );
+
+        // Process the entered name and updated salary
+        result.ifPresent(pair -> {
+            try ( Connection connection = getConnection( ) ) {
+                // Prepare the UPDATE statement
+                String query = "UPDATE pegawai SET gaji = ? WHERE namaPegawai = ?";
+                PreparedStatement statement = connection.prepareStatement(query);
+                statement.setDouble(1, pair.getValue( )); // Updated Salary
+                statement.setString(2, pair.getKey( )); // Name
+
+                // Execute the UPDATE statement
+                int affectedRows = statement.executeUpdate( );
+                if (affectedRows > 0) {
+                    System.out.println("Record updated successfully!");
+                } else {
+                    System.out.println("Failed to update record!");
+                }
+
+                // Refresh the data in the TableView
+                dataFramer(connection);
+            } catch (SQLException e) {
+                e.printStackTrace( );
+            }
+        });
     }
-
-//    public void deleteRecord (ActionEvent actionEvent) {
-//        try ( Connection connection = getConnection( ) ) {
-//
-//            // Prepare the UPDATE statement
-//            String query = "DELETE FROM pegawai WHERE namaPegawai = ?";
-//            PreparedStatement statement = connection.prepareStatement(query);
-//            statement.setString(1, "John Doe"); // Replace with the name of the record to update
-//
-//            // Execute the UPDATE statement
-//            int affectedRows = statement.executeUpdate( );
-//            if (affectedRows > 0) {
-//                System.out.println("Record deleted successfully!");
-//            } else {
-//                System.out.println("Failed to update record!");
-//            }
-//
-//            // Refresh the data in the TableView
-//            dataFramer(connection);
-//        } catch (SQLException e) {
-//            e.printStackTrace( );
-//        }
-//    }
-
 
     public void deleteRecord (ActionEvent actionEvent) {
         Dialog<String> dialog = new Dialog<>( );
@@ -408,16 +344,23 @@ public class Controller {
     }
 
     public void showTable (ActionEvent actionEvent) {
-
         try ( Connection connection = getConnection( ) ) {
             connection( );
             tableView.setVisible(true);
+
+            // Ensure the connection is open
+            if (connection.isClosed( )) {
+                // Handle the connection closure and return or throw an exception
+                // depending on your requirements
+                // Example: return or throw an exception indicating the connection closure
+                return;
+            }
 
             // Retrieve and display the data in the table
             dataFramer(connection);
 
             // Enable editing of the table cells
-            tableView.setEditable(false);
+            tableView.setEditable(true);
             nameTableColumn.setCellFactory(TextFieldTableCell.forTableColumn( ));
             salaryTableColumn.setCellFactory(TextFieldTableCell.forTableColumn( ));
 
@@ -436,24 +379,35 @@ public class Controller {
         } catch (SQLException e) {
             e.printStackTrace( );
         }
-
     }
 
     private void updatePerson (Connection connection, Person person) {
         try {
-            // Prepare the UPDATE statement
-            String query = "UPDATE pegawai SET gaji = ? WHERE idPegawai = ?";
-            PreparedStatement statement = connection.prepareStatement(query);
+            // Check if the connection is closed or invalid
+            if (connection == null || connection.isClosed( )) {
+                // Handle the connection issue appropriately
+                System.out.println("Connection is closed or invalid.");
+                return;
+            }
+
+            // Prepare the SQL statement
+            String sql = "UPDATE pegawai SET gaji = ? WHERE idPegawai = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
             statement.setDouble(1, person.getSalary( ));
             statement.setInt(2, person.getID( ));
 
-            // Execute the UPDATE statement
-            int affectedRows = statement.executeUpdate( );
-            if (affectedRows > 0) {
-                System.out.println("Record updated successfully!");
+            // Execute the SQL statement
+            int rowsAffected = statement.executeUpdate( );
+
+            // Check the result of the update operation
+            if (rowsAffected > 0) {
+                System.out.println("Person updated successfully.");
             } else {
-                System.out.println("Failed to update record!");
+                System.out.println("Failed to update person.");
             }
+
+            // Close the statement (optional, but recommended)
+            statement.close( );
         } catch (SQLException e) {
             e.printStackTrace( );
         }
@@ -465,9 +419,9 @@ public class Controller {
         private int id;
 
         /**
-         * @param name   fetching name of the user
-         * @param salary for fetching data salary
-         * @param id     fetching unique identifier of user in that database to prevent duplication
+         * @param name   fetch name of the user
+         * @param salary fetch data salary
+         * @param id     fetch unique identifier of user in that database to prevent duplication
          */
         public Person (String name, double salary, int id) {
             this.name = name;
@@ -499,4 +453,49 @@ public class Controller {
             this.id = id;
         }
     }
+
+    @FXML
+    public void playAudio (ActionEvent actionEvent) {
+        String mediaPath = lagu;
+
+
+        if (mediaPlayer != null && mediaPlayer.getStatus( ) == MediaPlayer.Status.PLAYING) {
+            mediaPlayer.pause( );
+        } else {
+            if (mediaPlayer != null && mediaPlayer.getStatus( ) == MediaPlayer.Status.PAUSED) {
+                mediaPlayer.play( );
+            } else {
+                Media media = new Media(new File(mediaPath).toURI( ).toString( ));
+
+                if (mediaPlayer != null) {
+                    mediaPlayer.dispose( );
+                }
+
+                mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.setAutoPlay(true);
+
+                MediaView mediaView = new MediaView(mediaPlayer);
+
+                mediaPlayer.setOnEndOfMedia(() -> playToggleButton.setSelected(false));
+            }
+        }
+
+        if (mediaPlayer == null) {
+
+            dialog = new Dialog<>( );
+
+            GridPane gp = new GridPane( );
+            gp.add(new Label("Warning"), 0, 0);
+
+            dialog.setTitle("Audio tidak ditemukan");
+            dialog.setHeaderText("Audio Header");
+            dialog.getDialogPane( ).setContent(gp);
+            dialog.getDialogPane( ).getButtonTypes( ).addAll(ButtonType.OK);
+            dialog.show( );
+
+        }
+    }
+
+
+
 }
