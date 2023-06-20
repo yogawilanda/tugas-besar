@@ -53,18 +53,18 @@ public class Controller {
     private Label statusLabel;
 
     @FXML
-    private TableView<Person> tableView;
+    private TableView<User> tableView;
 
     @FXML
-    public TableColumn<Person, String> IDTableColumn;
+    public TableColumn<User, String> IDTableColumn;
 
     @FXML
-    public TableColumn<Person, String> nameTableColumn;
+    public TableColumn<User, String> nameTableColumn;
 
     @FXML
-    public TableColumn<Person, String> salaryTableColumn;
+    public TableColumn<User, String> salaryTableColumn;
 
-    private ObservableList<Person> data;
+    private ObservableList<User> data;
 
     public String username;
     public String password;
@@ -85,6 +85,27 @@ public class Controller {
 
     @FXML
     private Button openWebUrlButton;
+
+    @FXML
+    private void openWebUrl2 (ActionEvent event) {
+        // Create a new stage
+        Stage stage = new Stage( );
+        stage.setTitle("YouTube Video");
+
+        // Create a WebView and WebEngine
+        WebView webView = new WebView( );
+        WebEngine webEngine = webView.getEngine( );
+
+        // Set the YouTube video embed URL as the source
+        String videoUrl = "https://youtu.be/Ony6_S4J-zc";
+        webEngine.load(videoUrl);
+
+        // Set the WebView as the content of the stage
+        stage.setScene(new Scene(webView));
+
+        // Show the stage
+        stage.show( );
+    }
 
     @FXML
     private void openWebUrl (ActionEvent event) {
@@ -115,29 +136,126 @@ public class Controller {
     //    Alur kerjanya :
     //    1. memutar audio berdasarkan path yang dituju, apabila ditemukan, maka akan memutar
     //    2. Jika tidak ditemukan, akan menggunakan memberikan informasi bahwa musik tidak ditemukan.
+    @FXML
+    public void playAudio (ActionEvent actionEvent) {
+        String mediaPath = lagu;
 
 
-    String database = "eleanor_db";
-    String url = "jdbc:mysql://localhost:3306/" + database;
+        if (mediaPlayer != null && mediaPlayer.getStatus( ) == MediaPlayer.Status.PLAYING) {
+            mediaPlayer.pause( );
+        } else {
+            if (mediaPlayer != null && mediaPlayer.getStatus( ) == MediaPlayer.Status.PAUSED) {
+                mediaPlayer.play( );
+            } else {
+                Media media = new Media(new File(mediaPath).toURI( ).toString( ));
 
-    public Connection getConnection () throws SQLException {
-        return DriverManager.getConnection(url, username, password);
+                if (mediaPlayer != null) {
+                    mediaPlayer.dispose( );
+                }
+
+                mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.setAutoPlay(true);
+
+                MediaView mediaView = new MediaView(mediaPlayer);
+
+                mediaPlayer.setOnEndOfMedia(() -> playToggleButton.setSelected(false));
+            }
+        }
+
+        if (mediaPlayer == null) {
+
+        }
     }
 
-    private Connection connection;
+
+    public Connection getConnection () throws SQLException {
+        String database = "eleanor_db";
+        String url = "jdbc:mysql://localhost:3306/" + database;
+        return DriverManager.getConnection(url, "admin_eleanor", null);
+    }
+
+
+    void connection () {
+        try {
+            Connection connection = getConnection( ); // Store the connection in the member variable
+            loginScene.setVisible(false);
+        } catch (SQLException e) {
+            statusLabel.setText("Koneksi Gagal, Cek Stacktrace!");
+            e.printStackTrace( );
+            hideTable( );
+        }
+    }
+
+//    public void login () {
+//        connection( );
+//        getUsername( );
+//        getPassword( );
+//
+//
+//        try ( Connection connection = getConnection( );
+//              PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE nama_user = ?");
+//        ) {
+//            statement.setString(1, username);
+//            ResultSet resultSet = statement.executeQuery( );
+//
+//            if (resultSet.next( )) {
+//                String storedPassword = resultSet.getString("password_user");
+//                // Perform password comparison
+//                if (storedPassword.equals(password)) {
+//
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace( );
+//        }
+//
+//
+//        controlBtnDataFrame.setVisible(true);
+//        tableView.setVisible(false);
+//        statusLabel.setText("Login successful!");
+//
+//    }
+
+    public void login() {
+        getUsername();
+        getPassword();
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM user WHERE nama_user = ?")) {
+            statement.setString(1, username);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    String storedPassword = resultSet.getString("password_user");
+                    // Perform password comparison
+                    if (storedPassword.equals(password)) {
+                        controlBtnDataFrame.setVisible(true);
+                        tableView.setVisible(false);
+                        statusLabel.setText("Login successful!");
+                        return;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // If authentication fails or an exception occurs, show appropriate feedback
+        statusLabel.setText("Invalid username or password!");
+    }
+
 
     private void dataFramer (Connection connection) throws SQLException {
         data = FXCollections.observableArrayList( );
 
         // Retrieve data from the database
-        String query = "SELECT * FROM pegawai";
+        String query = "SELECT * FROM user";
         PreparedStatement statement = connection.prepareStatement(query);
         ResultSet resultSet = statement.executeQuery( );
         while (resultSet.next( )) {
-            String name = resultSet.getString("namaPegawai");
-            int id = resultSet.getInt("idPegawai");
-            double salary = resultSet.getDouble("gaji");
-            data.add(new Person(name, salary, id));
+            String name = resultSet.getString("nama_user");
+            int id = resultSet.getInt("id_user");
+//            String salary = resultSet.getDouble("_user");
+//            data.add(new User(name, salary, id));
         }
 
         // Set up the TableView and its columns
@@ -150,36 +268,6 @@ public class Controller {
     public TextField nameTextField;
     public Dialog<Pair<String, Double>> dialog;
 
-    void connection () {
-        try {
-            connection = getConnection( ); // Store the connection in the member variable
-            loginScene.setVisible(false);
-//            imgAnchorLogin.setVisible(false);
-        } catch (SQLException e) {
-            statusLabel.setText("Koneksi Gagal, Cek Stacktrace!");
-            e.printStackTrace( );
-            hideTable( );
-        }
-    }
-
-    private void hideTable () {
-        panelDataFrame.setVisible(false);
-    }
-    public void login () {
-        getUsername( );
-        getPassword( );
-        connection( );
-        controlBtnDataFrame.setVisible(true);
-        tableView.setVisible(false);
-        statusLabel.setText("Login successful!");
-
-    }
-    public void backToLogin (ActionEvent actionEvent) throws  SQLException {
-        getConnection( ).close( );
-        tableView.setVisible(false);
-        loginScene.setVisible(true);
-    }
-
     public void addRecord (ActionEvent actionEvent) {
         dialog = new Dialog<>( );
         dialog.setTitle("Add Record");
@@ -188,24 +276,25 @@ public class Controller {
         // Set up the text fields
 
         nameTextField = new TextField( );
-        TextField salaryTextField = new TextField( );
+        TextField jabatan = new TextField( );
         GridPane gridPane = new GridPane( );
         gridPane.add(new Label("Name:"), 0, 0);
         gridPane.add(nameTextField, 1, 0);
         gridPane.add(new Label("Salary:"), 0, 1);
-        gridPane.add(salaryTextField, 1, 1);
+        gridPane.add(jabatan, 1, 1);
         dialog.getDialogPane( ).setContent(gridPane);
 
         // Add buttons to the dialog
         ButtonType addButton = new ButtonType("Add", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane( ).getButtonTypes( ).addAll(addButton, ButtonType.CANCEL);
 
+//        todo: buat ulang
         // Set the result converter to get the entered name and salary
         dialog.setResultConverter(buttonType -> {
             if (buttonType == addButton) {
                 String name = nameTextField.getText( ).trim( );
-                double salary = Double.parseDouble(salaryTextField.getText( ).trim( ));
-                return new Pair<>(name, salary);
+                String salary = jabatan.getText( );
+//                return new Pair<>(name, salary);
             }
             return null;
         });
@@ -217,7 +306,7 @@ public class Controller {
         result.ifPresent(pair -> {
             try ( Connection connection = getConnection( ) ) {
                 // Prepare the INSERT statement
-                String query = "INSERT INTO pegawai (namaPegawai, gaji) VALUES (?, ?)";
+                String query = "INSERT INTO user (nama_user, kode_user) VALUES (?, ?)";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, pair.getKey( )); // Name
                 statement.setDouble(2, pair.getValue( )); // Salary
@@ -236,6 +325,16 @@ public class Controller {
                 e.printStackTrace( );
             }
         });
+    }
+
+    private void hideTable () {
+        panelDataFrame.setVisible(false);
+    }
+
+    public void moveToNext (ActionEvent actionEvent) throws IOException, SQLException {
+        getConnection( ).close( );
+        tableView.setVisible(false);
+        loginScene.setVisible(true);
     }
 
     public void updateRecord (ActionEvent actionEvent) {
@@ -274,7 +373,7 @@ public class Controller {
         result.ifPresent(pair -> {
             try ( Connection connection = getConnection( ) ) {
                 // Prepare the UPDATE statement
-                String query = "UPDATE pegawai SET gaji = ? WHERE namaPegawai = ?";
+                String query = "UPDATE user SET gaji = ? WHERE nama_user = ?";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setDouble(1, pair.getValue( )); // Updated Salary
                 statement.setString(2, pair.getKey( )); // Name
@@ -294,6 +393,7 @@ public class Controller {
             }
         });
     }
+
 
     public void deleteRecord (ActionEvent actionEvent) {
         Dialog<String> dialog = new Dialog<>( );
@@ -323,7 +423,7 @@ public class Controller {
         result.ifPresent(name -> {
             try ( Connection connection = getConnection( ) ) {
                 // Prepare the DELETE statement
-                String query = "DELETE FROM pegawai WHERE namaPegawai = ?";
+                String query = "DELETE FROM user WHERE nama_user = ?";
                 PreparedStatement statement = connection.prepareStatement(query);
                 statement.setString(1, name);
 
@@ -342,6 +442,7 @@ public class Controller {
             }
         });
     }
+
 
     public void showTable (ActionEvent actionEvent) {
         try ( Connection connection = getConnection( ) ) {
@@ -366,22 +467,22 @@ public class Controller {
 
             // Set up event handlers for committing edits
             nameTableColumn.setOnEditCommit(event -> {
-                Person person = event.getRowValue( );
-                person.setName(event.getNewValue( ));
-                updatePerson(connection, person);
+                User user = event.getRowValue( );
+                user.setName(event.getNewValue( ));
+                updatePerson(connection, user);
             });
 
             salaryTableColumn.setOnEditCommit(event -> {
-                Person person = event.getRowValue( );
-                person.setSalary(Double.parseDouble(event.getNewValue( )));
-                updatePerson(connection, person);
+                User user = event.getRowValue( );
+                user.setSalary(Double.parseDouble(event.getNewValue( )));
+                updatePerson(connection, user);
             });
         } catch (SQLException e) {
             e.printStackTrace( );
         }
     }
 
-    private void updatePerson (Connection connection, Person person) {
+    private void updatePerson (Connection connection, User user) {
         try {
             // Check if the connection is closed or invalid
             if (connection == null || connection.isClosed( )) {
@@ -391,10 +492,10 @@ public class Controller {
             }
 
             // Prepare the SQL statement
-            String sql = "UPDATE pegawai SET gaji = ? WHERE idPegawai = ?";
+            String sql = "UPDATE user SET gaji = ? WHERE iduser = ?";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setDouble(1, person.getSalary( ));
-            statement.setInt(2, person.getID( ));
+            statement.setDouble(1, user.getSalary( ));
+            statement.setInt(2, user.getID( ));
 
             // Execute the SQL statement
             int rowsAffected = statement.executeUpdate( );
@@ -413,17 +514,18 @@ public class Controller {
         }
     }
 
-    public static class Person {
+
+    public static class User {
         private String name;
         private double salary;
         private int id;
 
         /**
-         * @param name   fetch name of the user
-         * @param salary fetch data salary
-         * @param id     fetch unique identifier of user in that database to prevent duplication
+         * @param name   fetching name of the user
+         * @param salary for fetching data salary
+         * @param id     fetching unique identifier of user in that database to prevent duplication
          */
-        public Person (String name, double salary, int id) {
+        public User (String name, double salary, int id) {
             this.name = name;
             this.salary = salary;
             this.id = id;
@@ -453,49 +555,4 @@ public class Controller {
             this.id = id;
         }
     }
-
-    @FXML
-    public void playAudio (ActionEvent actionEvent) {
-        String mediaPath = lagu;
-
-
-        if (mediaPlayer != null && mediaPlayer.getStatus( ) == MediaPlayer.Status.PLAYING) {
-            mediaPlayer.pause( );
-        } else {
-            if (mediaPlayer != null && mediaPlayer.getStatus( ) == MediaPlayer.Status.PAUSED) {
-                mediaPlayer.play( );
-            } else {
-                Media media = new Media(new File(mediaPath).toURI( ).toString( ));
-
-                if (mediaPlayer != null) {
-                    mediaPlayer.dispose( );
-                }
-
-                mediaPlayer = new MediaPlayer(media);
-                mediaPlayer.setAutoPlay(true);
-
-                MediaView mediaView = new MediaView(mediaPlayer);
-
-                mediaPlayer.setOnEndOfMedia(() -> playToggleButton.setSelected(false));
-            }
-        }
-
-        if (mediaPlayer == null) {
-
-            dialog = new Dialog<>( );
-
-            GridPane gp = new GridPane( );
-            gp.add(new Label("Warning"), 0, 0);
-
-            dialog.setTitle("Audio tidak ditemukan");
-            dialog.setHeaderText("Audio Header");
-            dialog.getDialogPane( ).setContent(gp);
-            dialog.getDialogPane( ).getButtonTypes( ).addAll(ButtonType.OK);
-            dialog.show( );
-
-        }
-    }
-
-
-
 }

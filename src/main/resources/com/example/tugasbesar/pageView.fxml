@@ -107,7 +107,7 @@
                 <ToggleButton fx:id="playToggleButton" mnemonicParsing="false" onAction="#playAudio" text="Play"/>
                 <Button fx:id="openWebUrlButton" onAction="#openWebUrl" text="Open Web URL"/>
                 <Button fx:id="openWebUrlButton2" onAction="#openWebUrl" text="Open Web URL 2"/>
-                <Button fx:id="logout" onAction="#backToLogin" text="Logout"/>
+                <Button fx:id="logout" onAction="#moveToNext" text="Logout"/>
                 <ToggleButton fx:id="btnshowTable" onAction="#showTable" text="Show Table"/>
                 <Button fx:id="btnAddNewTable" onAction="#addRecord" text="Add User"/>
                 <Button fx:id="btnUpdateUser" onAction="#updateRecord" text="Update User"/>
