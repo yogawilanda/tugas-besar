@@ -1,28 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.web.WebView?>
-
-
-<BorderPane prefHeight="768" prefWidth="1366" style="-fx-background-color: #242529;"
-            xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.tugasbesar.Controller">
-
-
-    <left>
-        <AnchorPane fx:id="loginScene" prefHeight="768.0" prefWidth="400.0"
-                    style="-fx-background-color: #212121; padding: 20px;">
+<AnchorPane fx:id="AnchorLogin" prefHeight="731.0"  style="-fx-background-color: #242529;" prefWidth="465.0" xmlns="http://javafx.com/javafx/20.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tugasbesar.Controller">
+    <children>
+        <VBox layoutX="53.0" layoutY="234.0">
             <children>
-                <Label layoutX="20.0" layoutY="20.0"
-                       style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"
+                <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: white;"
                        text="Nice to see you again!"/>
-                <VBox layoutX="20.0" layoutY="70.0" spacing="10">
+                <VBox spacing="10">
                     <Label style="-fx-text-fill: white;" text="Your ID"/>
                     <TextField fx:id="usernameField" prefHeight="37.0" prefWidth="360.0" promptText="Your ID"
                                style="-fx-background-color: #212121; -fx-text-fill: white; -fx-border-color: white; -fx-prompt-text-fill: white; -fx-border-radius: 5px;">
@@ -34,7 +24,8 @@
                         </effect>
                     </TextField>
                     <Label style="-fx-text-fill: white;" text="Password"/>
-                    <PasswordField fx:id="passwordField" prefWidth="300.0" promptText="Password"
+                    <PasswordField fx:id="passwordField" onContextMenuRequested="#handleLogin" prefWidth="300.0"
+                                   promptText="Password"
                                    style="-fx-background-color: #212121; -fx-text-fill: white; -fx-border-color: white; -fx-prompt-text-fill: white; -fx-border-radius: 5px;">
                         <font>
                             <Font size="16"/>
@@ -44,83 +35,27 @@
                         </effect>
                     </PasswordField>
                 </VBox>
-                <Button layoutX="20.0" layoutY="230.0" onAction="#login" prefWidth="360.0"
+                <Button onAction="#handleLogin" prefWidth="360.0"
                         style="-fx-background-color: #007AFF; -fx-text-fill: white;" text="Login">
                     <font>
                         <Font name="Arial Bold" size="16.0"/>
                     </font>
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
                 </Button>
-                <CheckBox layoutX="20.0" layoutY="290.0" mnemonicParsing="false" style="-fx-text-fill: white;"
-                          text="Remember me"/>
-                <Label fx:id="statusLabel" layoutX="20.0" layoutY="350.0" prefHeight="71.0" prefWidth="360.0"
-                       style="-fx-text-fill: white;"/>
+                <CheckBox mnemonicParsing="false" style="-fx-text-fill: white;" text="Remember me">
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                </CheckBox>
+                <Label fx:id="statusLabel" prefHeight="71.0" prefWidth="360.0" style="-fx-text-fill: white;"/>
             </children>
-        </AnchorPane>
-    </left>
-
-    <!-- Center Menu -->
-    <center>
-        <VBox alignment="CENTER" prefHeight="418.0" prefWidth="747.0" style="-fx-background-color: #242529;"
-              BorderPane.alignment="CENTER">
-            <StackPane>
-                <padding>
-                    <Insets bottom="10.0" left="10.0" right="10.0"/>
-                </padding>
-
-
-                <!--Table untuk menampilkan user yang telah mengikuti program-->
-                <TableView fx:id="tableView" editable="true" fixedCellSize="0.0" layoutX="10.0" layoutY="92.0"
-                           nodeOrientation="LEFT_TO_RIGHT" prefHeight="554.0" prefWidth="315.0"
-                           visible="false"
-                           style="-fx-background-color: #333333; -fx-border-radius: 5px; -fx-background-radius: 5px;">
-
-                    <columns>
-                        <TableColumn fx:id="IDTableColumn" prefWidth="40.0" text="ID">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="id"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="nameTableColumn" prefWidth="158.0" text="Pegawai">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="pegawai"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="salaryTableColumn" prefWidth="127.0" text="Salary">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="Salary"/>
-                            </cellValueFactory>
-                        </TableColumn>
-                    </columns>
-                    <effect>
-                        <DropShadow color="aquamarine" radius="5"/>
-                    </effect>
-                </TableView>
-                <WebView fx:id="webView" layoutX="400.0" layoutY="20.0" prefHeight="400.0" prefWidth="500.0"
-                         visible="false"/>
-            </StackPane>
-
-            <HBox fx:id="controlBtnDataFrame" spacing="10" visible="false">
-                <!--Padding untuk memisahkan antar kedua objek-->
-                <padding>
-                    <Insets bottom="10"/>
-                </padding>
-                <ToggleButton fx:id="playToggleButton" mnemonicParsing="false" onAction="#playAudio" text="Play"/>
-                <Button fx:id="openWebUrlButton" onAction="#openWebUrl" text="Open Web URL"/>
-                <Button fx:id="openWebUrlButton2" onAction="#openWebUrl" text="Open Web URL 2"/>
-                <Button fx:id="logout" onAction="#moveToNext" text="Logout"/>
-                <ToggleButton fx:id="btnshowTable" onAction="#showTable" text="Show Table"/>
-                <Button fx:id="btnAddNewTable" onAction="#addRecord" text="Add User"/>
-                <Button fx:id="btnUpdateUser" onAction="#updateRecord" text="Update User"/>
-                <Button fx:id="btnDeleteUser" onAction="#deleteRecord" text="Delete User"/>
-            </HBox>
         </VBox>
-    </center>
 
 
-    <bottom>
-        <!-- Add any desired elements here -->
-    </bottom>
-</BorderPane>
-
-
-
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+    </padding>
+</AnchorPane>
