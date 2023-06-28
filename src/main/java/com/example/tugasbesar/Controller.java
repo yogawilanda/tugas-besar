@@ -44,6 +44,7 @@ public class Controller {
 
     private ObservableList<User> data;
 
+
     public static Connection getConnection () throws SQLException {
         String db = "eleanor_db";
         String url = "jdbc:mysql://localhost:3306/" + db;
@@ -61,24 +62,25 @@ public class Controller {
         }
     }
 
+//    public Button getLoginButton () {
+//        return loginButton;
+//    }
+
     @FXML
     private void handleLogin (ActionEvent actionEvent) {
         String username = usernameField.getText( );
         String password = passwordField.getText( );
 
         String preparedStatement = "SELECT * FROM user WHERE nama_user = ?";
-
-
+//        todo : only for dev, use below when done
         try ( Connection connection = getConnection( );
-              PreparedStatement statement = connection.prepareStatement(preparedStatement) ) {
-            statement.setString(1, username);
+               PreparedStatement statement = connection.prepareStatement(preparedStatement) ) {
+            statement.setString(1, "diana");
             try ( ResultSet resultSet = statement.executeQuery( ) ) {
                 if (resultSet.next( )) {
                     String storedPassword = resultSet.getString("password_user");
-                    if (storedPassword.equals(password)) {
-//                        tableView.setVisible(false);
+                    if (storedPassword.equals("12")) {
                         statusLabel.setText("Login successful!");
-//                        loginScene.setVisible(false);
                         AnchorLogin.getScene( ).getWindow( ).hide( );
 
 
@@ -96,10 +98,33 @@ public class Controller {
         } catch (SQLException e) {
             e.printStackTrace( );
         }
+//        try ( Connection connection = getConnection( );
+//               PreparedStatement statement = connection.prepareStatement(preparedStatement) ) {
+//            statement.setString(1, username);
+//            try ( ResultSet resultSet = statement.executeQuery( ) ) {
+//                if (resultSet.next( )) {
+//                    String storedPassword = resultSet.getString("password_user");
+//                    if (storedPassword.equals(password)) {
+//                        statusLabel.setText("Login successful!");
+//                        AnchorLogin.getScene( ).getWindow( ).hide( );
+//
+//
+//                        navigation("dashboard.fxml");
+//                        return;
+//                    }
+//                    if (storedPassword.isEmpty( )) {
+//                        statusLabel.setText("Password is empty!");
+//                    }
+//
+//                }
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace( );
+//        }
         //appropriate feedback
         statusLabel.setText("Invalid username or password!");
-
-
     }
 
     private double xOffset = 0;

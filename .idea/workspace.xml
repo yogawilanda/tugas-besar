@@ -9,12 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41ef2654-f8af-4994-80f1-ac0efeb0ecaf" name="Changes" comment="adding media player and webview (just hobbies, nvm)">
+    <list default="true" id="41ef2654-f8af-4994-80f1-ac0efeb0ecaf" name="Changes" comment="remake">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Dashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/film/Film.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/FilmDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/film/FilmDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/reservasi/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/reservasi/ReservationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/ninuwibu.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/dashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/pageView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/pageView.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,9 +29,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -48,6 +53,9 @@
         <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2RL0wt4CKuZjMGndSGdodDNw1lj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -72,6 +80,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example.tugasbesar" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Coding\java\tugas-besar\src\main\resources\com\example\tugasbesar\media" />
     </key>
@@ -85,7 +96,7 @@
       <module name="tugas-besar" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.tugasbesar.*" />
+          <option name="PATTERN" value="com.example.tugasbesar.film.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -164,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687276305324</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="remake">
+      <created>1687524644581</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1687524644581</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,6 +214,7 @@
     <MESSAGE value="relayout" />
     <MESSAGE value="adding CRUD button" />
     <MESSAGE value="adding media player and webview (just hobbies, nvm)" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding media player and webview (just hobbies, nvm)" />
+    <MESSAGE value="remake" />
+    <option name="LAST_COMMIT_MESSAGE" value="remake" />
   </component>
 </project>

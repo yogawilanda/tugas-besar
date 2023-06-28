@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-<AnchorPane fx:id="Dashboard" id="dashboard" prefHeight="610.0" prefWidth="1123.0"
+<?import javafx.scene.layout.HBox?>
+<AnchorPane id="dashboard" fx:id="Dashboard" prefHeight="610.0" prefWidth="1123.0"
             style="-fx-background-color: #242529;" xmlns="http://javafx.com/javafx/20.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tugasbesar.Dashboard">
 
-    <Button fx:id="btnNavLogout" layoutX="107.0" layoutY="483.0" text="Logout" onAction="#logOut">
+    <Button fx:id="btnNavLogout" layoutX="107.0" layoutY="483.0" onAction="#logOut" text="Logout">
 
     </Button>
 
@@ -21,19 +23,34 @@
                 <Label prefHeight="17.0" prefWidth="200.0" text="Title Movies" textFill="WHITE"/>
                 <Label prefHeight="17.0" prefWidth="200.0" text="Description" textFill="WHITE"/>
                 <Label prefHeight="17.0" prefWidth="200.0" text="" textFill="WHITE"/>
-                <Button fx:id="btnBookMovie" onAction="#confirmationBook" layoutX="107.0" layoutY="483.0" text="Purchase">
+            </children>
+            <HBox spacing="10">
+                <TextField fx:id="textfieldIDFilmBook" promptText="ID Film"></TextField>
+                <TextField fx:id="textfieldNamaFilmBook" promptText="Nama Film"></TextField>
+                <Button fx:id="btnBookMovie" layoutX="107.0" layoutY="483.0" onAction="#reservationDialog"
+                        text="Purchase">
 
                 </Button>
-            </children>
+
+                <padding>
+                    <Insets left="10" right="10"></Insets>
+                </padding>
+            </HBox>
         </VBox>
+        <Button fx:id="btnShowMovieReservation" layoutX="762.0" layoutY="214.0" onAction="#filmTable"
+                text="Reservation">
+
+        </Button>
+
     </AnchorPane>
 
 
     <!--Table untuk menampilkan user yang telah mengikuti program-->
-    <TableView fx:id="tableView" editable="true" fixedCellSize="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="554.0"
+    <TableView fx:id="" editable="true" fixedCellSize="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="554.0"
                prefWidth="315.0"
                style="-fx-background-color: #333333; -fx-border-radius: 5px; -fx-background-radius: 5px;"
                visible="false">
+
 
         <columns>
             <TableColumn fx:id="IDTableColumn" prefWidth="40.0" text="ID">
@@ -56,5 +73,33 @@
             <DropShadow color="aquamarine" radius="5"/>
         </effect>
     </TableView>
+
+
+<!--    @TableFilm-->
+    <TableView fx:id="filmTable" layoutX="375.0" layoutY="39.0" prefHeight="532.0" prefWidth="441.0"
+               style="-fx-background-color: gray;">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="40.0" text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id_film"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="namaColumn" prefWidth="181.0" text="Nama Film">
+                <cellValueFactory>
+                    <PropertyValueFactory property="nama_film"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn fx:id="deskripsiColumn" prefWidth="219.0" text="Deskripsi Film">
+                <cellValueFactory>
+                    <PropertyValueFactory property="deskripsi_film"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+        <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        </padding>
+    </TableView>
+
+
 
 </AnchorPane>
