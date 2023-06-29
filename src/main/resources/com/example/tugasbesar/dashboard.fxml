@@ -7,6 +7,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
+
+
 <AnchorPane id="dashboard" fx:id="Dashboard" prefHeight="610.0" prefWidth="1123.0"
             style="-fx-background-color: #242529;" xmlns="http://javafx.com/javafx/20.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tugasbesar.Dashboard">

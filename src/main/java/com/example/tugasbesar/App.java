@@ -23,7 +23,8 @@ public class App extends Application {
 
         Scene scene = new Scene(root);
         stage.setTitle("Eleanor - Desktop App Ticket Reservation");
-        //menyembunyikan windows bar
+
+        Navigation.setWindowsIcon(stage);
         stage.initStyle(StageStyle.UNDECORATED);
 
         //membuat fitur drag and move

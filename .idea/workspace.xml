@@ -9,16 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="41ef2654-f8af-4994-80f1-ac0efeb0ecaf" name="Changes" comment="remake">
+    <list default="true" id="41ef2654-f8af-4994-80f1-ac0efeb0ecaf" name="Changes" comment="selection on table done">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/film/Film.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/FilmDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/film/FilmDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/reservasi/Reservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/ReservationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/reservasi/ReservationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/ninuwibu.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/tugasbesar/Table.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/dashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/tugasbesar/dashboard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,8 +27,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -63,22 +60,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;remaking__authentication&quot;,
-    &quot;last_directory_selection&quot;: &quot;F:/Coding/java/tugas-besar/src/main/java/com/example/tugasbesar&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Coding/java/mysql-connector-j-8.0.32.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.41264367&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "remaking__authentication",
+    "last_directory_selection": "F:/Coding/java/tugas-besar/src/main/java/com/example/tugasbesar",
+    "last_opened_file_path": "F:/Coding/java/tugas-besar/src/main/resources/com/example/tugasbesar/media",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.41264367",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.tugasbesar" />
@@ -90,8 +88,10 @@
       <recent name="F:\Coding\java\tugas-besar\src\main\java\com\example\tugasbesar" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="20" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.tugasbesar.App" />
       <module name="tugas-besar" />
       <extension name="coverage">
@@ -104,9 +104,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Dashboard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.tugasbesar.Dashboard" />
+      <module name="tugas-besar" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.tugasbesar.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.Dashboard" />
       </list>
     </recent_temporary>
   </component>
@@ -182,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687524644581</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="selection on table done">
+      <created>1687945828733</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1687945828733</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,7 +217,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="new-branch" />
+                        <option value="origin/remaking_authentication" />
                       </list>
                     </value>
                   </entry>
@@ -215,6 +236,7 @@
     <MESSAGE value="adding CRUD button" />
     <MESSAGE value="adding media player and webview (just hobbies, nvm)" />
     <MESSAGE value="remake" />
-    <option name="LAST_COMMIT_MESSAGE" value="remake" />
+    <MESSAGE value="selection on table done" />
+    <option name="LAST_COMMIT_MESSAGE" value="selection on table done" />
   </component>
 </project>
