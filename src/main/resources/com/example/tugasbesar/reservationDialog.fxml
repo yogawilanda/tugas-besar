@@ -1,0 +1,23 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import javafx.scene.control.Label?>-->
+<!--<?import javafx.scene.image.ImageView?>-->
+<!--<?import javafx.scene.layout.VBox?>-->
+
+<!--&lt;!&ndash; reservationDialog.fxml &ndash;&gt;-->
+
+<!--<?import javafx.scene.layout.AnchorPane?>-->
+<!--<AnchorPane prefWidth="1300">-->
+<!--    <VBox prefHeight="171.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" >-->
+
+<!--        <children>-->
+<!--            <Label text="Selected Film:" />-->
+<!--            <Label fx:id="filmLabel" />-->
+<!--            <Label text="Selected ID:" />-->
+<!--            <Label fx:id="IDLabel" />-->
+<!--            <ImageView fx:id="imageView" fitWidth="800" preserveRatio="true" />-->
+<!--        </children>-->
+
+<!--    </VBox>-->
+
+<!--</AnchorPane>-->

@@ -19,11 +19,7 @@
       <artifactId>javafx-controls</artifactId>
       <version>20</version>
     </dependency>
-    <dependency>
-      <groupId>org.openjfx</groupId>
-      <artifactId>javafx-fxml</artifactId>
-      <version>20</version>
-    </dependency>
+
                                     
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -36,7 +32,41 @@
       <artifactId>junit-jupiter-engine</artifactId>
       <version>${junit.version}</version>
       <scope>test</scope>
-    </dependency>              </dependencies>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>13.0</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-media</artifactId>
+      <version>19.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.netopyr.reduxfx</groupId>
+      <artifactId>reduxfx-fxml</artifactId>
+      <version>0.4.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-fxml</artifactId>
+      <version>20</version>
+    </dependency>
+    <dependency>
+      <groupId>com.vladsch.javafx-webview-debugger</groupId>
+      <artifactId>javafx-webview-debugger</artifactId>
+      <version>0.8.6</version>
+    </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-web</artifactId>
+      <version>19.0.2</version>
+    </dependency>
+
+  </dependencies>
 
   <build>
         <plugins>
@@ -58,7 +88,7 @@
             <!-- Default configuration for running with: mvn clean javafx:run -->
             <id>default-cli</id>
             <configuration>
-              <mainClass>com.example.tugasbesar/com.example.tugasbesar.HelloApplication</mainClass>
+              <mainClass>com.example.tugasbesar/com.example.tugasbesar.App</mainClass>
               <launcher>app</launcher>
               <jlinkZipName>app</jlinkZipName>
               <jlinkImageName>app</jlinkImageName>
