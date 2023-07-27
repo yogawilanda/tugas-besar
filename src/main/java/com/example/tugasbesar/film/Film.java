@@ -1,7 +1,7 @@
 package com.example.tugasbesar.film;
 
 public class Film {
-    private int id_film;
+    private int id_film, harga;
     private String nama_film, deskripsi_film;
 
     public int getId_film () {
@@ -26,5 +26,13 @@ public class Film {
 
     public void setDeskripsi_film (String deskripsi_film) {
         this.deskripsi_film = deskripsi_film;
+    }
+
+    public int getHarga () {
+        return harga;
+    }
+
+    public void setHarga ( int harga ) {
+        this.harga = harga;
     }
 }

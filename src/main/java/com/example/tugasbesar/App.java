@@ -1,52 +1,28 @@
 package com.example.tugasbesar;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 public class App extends Application {
-    private double xOffset = 0;
-    private double yOffset = 0;
 
-    final String fileName = "pageView.fxml";
+	final String login = "LoginView.fxml";
+	final String dashboardView = "DashboardView.fxml";
 
-    @Override
-    public void start (Stage stage) throws IOException {
-        //Menjalankan aplikasi dengan tampilan yang telah di sediakan di dalam variable fileName.
-        FXMLLoader loader = new FXMLLoader(getClass( ).getResource(fileName));
-        Parent root = loader.load( );
+	final String dialogReservationPage = "TransactionView.fxml";
 
-        Scene scene = new Scene(root);
-        stage.setTitle("Eleanor - Desktop App Ticket Reservation");
+	final String daftarDialogView = "DaftarDialogView.fxml";
+	@Override
+	public void start ( Stage stage ) throws IOException {
+			navigator.navigateTo(dashboardView, false);
+	}
 
-        Navigation.setWindowsIcon(stage);
-        stage.initStyle(StageStyle.UNDECORATED);
+	Navigation navigator = new Navigation( );
 
-        //membuat fitur drag and move
-        root.setOnMousePressed(event -> {
-            xOffset = event.getSceneX( );
-            yOffset = event.getSceneY( );
-        });
-
-        //menggerakan scene
-        root.setOnMouseDragged(event -> {
-            stage.setX(event.getScreenX( ) - xOffset);
-            stage.setY(event.getScreenY( ) - yOffset);
-        });
-
-        stage.setScene(scene);
-        stage.show( );
-    }
-
-
-    public static void main (String[] args) {
-        launch( );
-    }
+	public static void main ( String[] args ) {
+		launch( );
+	}
 
 
 }
