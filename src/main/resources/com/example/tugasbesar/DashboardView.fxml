@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="1040.0" prefWidth="1520.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.tugasbesar.DashboardController">
+    <children>
+          <StackPane fx:id="stackPaneImagePoster" prefHeight="417.0" prefWidth="286.0" style="-fx-background-color: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));" visible="false">
+              <Pane fx:id="judulFilmDashboard" layoutX="458.0" layoutY="311.0" prefHeight="263.0" prefWidth="177.0">
+                  <ImageView id="movieImage" fx:id="moviePoster" fitHeight="419.0" fitWidth="287.0" pickOnBounds="true">
+                      <effect>
+                          <DropShadow radius="24.655" width="79.62">
+                              <color>
+                                  <Color opacity="0.6870229244232178" />
+                              </color>
+                          </DropShadow>
+
+                      </effect>
+                      <image>
+                          <Image url="@media/poster/poster-spiderman-1.jpg" />
+                      </image>
+                  </ImageView>
+              </Pane>
+          </StackPane>
+        <AnchorPane id="dashboard" fx:id="Dashboard" focusTraversable="true" layoutX="-3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1041.0" prefWidth="1522.0" style="-fx-background-color: #1B1D21;" stylesheets="@CSS/css.css" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <children>
+                <ImageView id="movieImage" fx:id="movieBackdrop" fitHeight="894.0" fitWidth="1523.0" layoutX="-2.0" nodeOrientation="INHERIT" pickOnBounds="true" smooth="false" visible="false">
+                    <effect>
+                        <DropShadow radius="24.655" width="79.62">
+                            <color>
+                                <Color opacity="0.6870229244232178" />
+                            </color>
+                        </DropShadow>
+                    </effect>
+                    <image>
+                        <Image url="@media/backdrop/imageBig1.jpg" />
+                    </image>
+                </ImageView>
+                <Rectangle height="1042.0" stroke="#17191c00" style="-fx-arc-width: 20px; -fx-arc-height: 20px;" width="1524.0">
+                    <fill>
+                        <LinearGradient endX="1.0" endY="0.023696682464454975" startX="1.0" startY="1.0">
+                            <stops>
+                                <Stop>
+                                    <color>
+                                        <Color red="0.08627451211214066" green="0.10196078568696976" blue="0.11372549086809158" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="0.1442953020134228">
+                                    <color>
+                                        <Color red="0.08627451211214066" green="0.10196078568696976" blue="0.11372549086809158" opacity="0.9800000190734863" />
+                                    </color>
+                                </Stop>
+                                <Stop offset="1.0">
+                                    <color>
+                                        <Color opacity="0.009999999776482582" />
+                                    </color>
+                                </Stop>
+                            </stops>
+                        </LinearGradient>
+                    </fill>
+                    <effect>
+                        <DropShadow height="126.52" radius="53.2325" width="88.41" />
+                    </effect>
+                </Rectangle>
+
+                <Label graphicTextGap="10.0" layoutX="634.0" layoutY="867.0" text="Eleanor Cinemas" textFill="WHITE">
+                    <font>
+                        <Font name="Rage Italic" size="50.0" />
+                    </font>
+                    <effect>
+                        <Glow level="0.5" />
+                    </effect>
+                </Label>
+                <TableView fx:id="filmTable" layoutX="1234.0" layoutY="687.0" prefHeight="172.0" prefWidth="224.0" style="-fx-background-color: #1B1D21; -fx-background-radius: 12; -fx-border-radius: 12; -fx-table-cell-border-color: transparent; -fx-base: #1B1D21; -fx-background-color: #1B1D21; -fx-control-inner-background: #1B1D21; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent; -fx-selection-bar: white; -fx-selection-bar-text: black; -fx-padding: 2;" visible="false">
+                    <columns>
+                        <TableColumn fx:id="idColumn" prefWidth="40.0" text="ID">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="id_film" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="namaColumn" prefWidth="181.0" text="Nama Film">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="nama_film" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="deskripsiColumn" prefWidth="219.0" text="Deskripsi Film">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="deskripsi_film" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                    <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                    </padding>
+                </TableView>
+                <Label fx:id="labelJudul" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="548.0" layoutY="600.0" prefHeight="87.0" prefWidth="481.0" text="Judul" textFill="WHITE" textOverrun="WORD_ELLIPSIS" visible="false" wrapText="true">
+                    <font>
+                        <Font name="System Bold" size="28.0" />
+                    </font>
+                </Label>
+                <Label fx:id="labelDeskripsi" alignment="TOP_CENTER" layoutX="554.0" layoutY="676.0" prefHeight="87.0" prefWidth="471.0" text="Deskripsi" textFill="WHITE" visible="false" wrapText="true">
+                    <font>
+                        <Font name="Calibri" size="24.0" />
+                    </font>
+                </Label>
+                <HBox layoutX="52.0" layoutY="923.0">
+                    <children>
+
+                        <Button fx:id="btnNavLogout" contentDisplay="TOP" graphicTextGap="6.0" onAction="#logOut" prefHeight="53.0" prefWidth="112.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Logout">
+                            <graphic>
+                                <ImageView fitHeight="35.0" fitWidth="35.0">
+                                    <Image url="@media/icons/logout.png" />
+                                    <effect>
+                                        <ColorAdjust brightness="1.0" />
+                                    </effect>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="btnExit1" contentDisplay="TOP" graphicTextGap="6.0" onAction="#exit" prefHeight="53.0" prefWidth="112.0" style="-fx-background-color: transparent; -fx-text-fill: white;" text="Exit">
+                            <graphic>
+                                <ImageView fitHeight="35.0" fitWidth="35.0">
+                                    <Image url="@media/icons/close.png" />
+                                    <effect>
+                                        <ColorAdjust brightness="1.0" />
+                                    </effect>
+                                </ImageView>
+                            </graphic>
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <Label fx:id="sambutanLogin" layoutX="71.0" layoutY="853.0" prefHeight="30.0" prefWidth="305.0" text="Selamat datang, Admin" textFill="WHITE">
+                    <font>
+                        <Font name="Calibri Bold" size="29.0" />
+                    </font>
+                </Label>
+                <Button fx:id="psnTiketBtnID" layoutX="1238.0" layoutY="918.0" onAction="#reservationDialog" prefHeight="37.0" prefWidth="149.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 28px; -fx-padding: 0.4em 1.4em;" text="Pesan Tiket" visible="false">
+                    <font>
+                        <Font name="System Bold" size="16.0" />
+                    </font>
+                </Button>
+                <ComboBox fx:id="pilihanComboBox" layoutX="1237.0" layoutY="649.0" prefHeight="25.0" prefWidth="94.0" promptText="Waktu" visible="false" />
+                <VBox fx:id="groupReservationVBox" layoutX="87.0" layoutY="694.0" opacity="0.0" prefHeight="95.0" prefWidth="200.0" spacing="10.0">
+                    <children>
+                        <TextField fx:id="textfieldIDFilmBook" promptText="ID Film" style="-fx-background-color: black; -fx-text-fill: white; -fx-prompt-text-fill: white;">
+                        </TextField>
+                        <TextField fx:id="textfieldNamaFilmBook" promptText="Nama Film" style="-fx-background-color: black; -fx-text-fill: white; -fx-prompt-text-fill: white;">
+                        </TextField>
+                        <Button fx:id="btnBookMovie" onAction="#reservationDialog" style="-fx-background-color: black; -fx-text-fill: white;" text="Purchase">
+                        </Button>
+                    </children>
+                </VBox>
+                <Label fx:id="labelJudul1" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="1234.0" layoutY="595.0" prefHeight="116.0" prefWidth="229.0" text="35k IDR" textFill="WHITE" textOverrun="WORD_ELLIPSIS" visible="false" wrapText="true">
+                    <font>
+                        <Font name="System Bold" size="60.0" />
+                    </font>
+                </Label>
+            <TextField fx:id="jumlahTiketTextField" layoutX="1346.0" layoutY="649.0" prefHeight="25.0" prefWidth="108.0" promptText="Jumlah Tiket" visible="false" />
+            <Label fx:id="keteranganHargaTiketLabel" layoutX="1241.0" layoutY="558.0" prefHeight="35.0" prefWidth="99.0" text="Harga : " textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Calibri Bold" size="29.0" />
+               </font>
+            </Label>
+            <Label fx:id="hargaTiketLabel" alignment="TOP_LEFT" layoutX="1239.0" layoutY="592.0" prefHeight="45.0" prefWidth="215.0" text="IDR 70K" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Calibri Bold" size="30.0" />
+               </font>
+            </Label>
+            <DatePicker  fx:id="datePickerDashboard" layoutX="1237.0" layoutY="875.0" prefHeight="25.0" prefWidth="215.0" visible="false" />
+            <Label fx:id="keterangSisaTiket" layoutX="674.0" layoutY="812.0" prefHeight="35.0" prefWidth="172.0" text="Seat Tersisa : " textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Calibri Bold" size="29.0" />
+               </font>
+            </Label>
+            <Label fx:id="penghitungSeatText" layoutX="846.0" layoutY="813.0" prefHeight="35.0" prefWidth="64.0" text="120" textFill="WHITE" visible="false">
+               <font>
+                  <Font name="Calibri Bold" size="29.0" />
+               </font>
+            </Label>
+            <TableView fx:id="transaksiTable" layoutX="65.0" layoutY="625.0" prefHeight="172.0" prefWidth="318.0" style="-fx-background-color: #1B1D21; -fx-background-radius: 12; -fx-border-radius: 12; -fx-table-cell-border-color: transparent; -fx-base: #1B1D21; -fx-background-color: #1B1D21; -fx-control-inner-background: #1B1D21; -fx-table-cell-border-color: transparent; -fx-table-header-border-color: transparent; -fx-selection-bar: white; -fx-selection-bar-text: black; -fx-padding: 2;" visible="false">
+               <columns>
+                  <TableColumn fx:id="idTransaksiColumn" prefWidth="40.0" text="ID">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="id_film" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="namaTransaksiColumn" prefWidth="106.0" text="Pembelian">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="nama_film" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="jumlahTiketTransaksiColumn" prefWidth="169.0" text="Jumlah Tiket">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="deskripsi_film" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </TableView>
+            </children>
+        </AnchorPane>
+        <HBox layoutX="479.0" layoutY="964.0" spacing="12.0">
+            <children>
+                <Button fx:id="btnBookMovie11" onAction="#reserveAction" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 28px; -fx-padding: 0.4em 1.4em;" text="Reservasi" />
+                <Button fx:id="btnDaftarMovie" onAction="#daftarkanFilmAction" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 28px; -fx-padding: 0.4em 1.4em;" text="Daftarkan Sinema" />
+                <Button fx:id="btnShowTransaksi" onAction="#btnShowTransaksiEvent" prefHeight="37.0" prefWidth="200.0" style="-fx-background-color: white; -fx-text-fill: black; -fx-background-radius: 28px; -fx-padding: 0.4em 1.4em;" text="Histori Transaksi" />
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>

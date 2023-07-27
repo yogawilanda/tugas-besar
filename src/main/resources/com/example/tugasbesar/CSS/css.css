@@ -1,0 +1,21 @@
+/* CSS style for the container */
+#filmDashboard {
+    -fx-background-color: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat;
+}
+
+/* CSS style for the ImageView */
+#movieImage {
+    -fx-background-color: transparent;
+}
+
+.root {
+
+-fx-background-color: transparent;
+}
+
+
+.logoutBtnIDCSS{
+-fx-background-color: red;
+}
